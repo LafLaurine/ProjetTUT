@@ -29,7 +29,7 @@ if(!empty($_POST['nickname']) && !empty($_POST['passwd']))
           //ce que l'user a entré
         $passwd=$tab['passwd'];
         //le pass hash
-        $pwdhash = $_POST[$hash];
+        $pwdhash = $_POST['passwd'];
         
         if (password_verify($passwd, $pwdhash)) 
         {
