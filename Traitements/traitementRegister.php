@@ -56,68 +56,58 @@ if (isset($nickname,$passwd,$mail))
    
     //Si différent de null
 
-    if(isset($nickname)) 
-    { 
-        try
-        {
-            $db = connectBd();
-        }
-        catch (PDOException $e)
-        {
-            exit('Erreur, problème de connexion à la base');
-        }
-
-        $nicknameValidity = testEmailValidity($nickname);
-        $mailValidity = testEmailValidity($mail);
-
-        //redirige en GET si nom utilisateur existe déjà
-        if ($nicknameValidity) {
-            header("Location: ../register.php?error=nickname");    
-        }
-
-        //redirige en GET si mail existe déjà
-        else if ($mailValidity) {
-            header ("Location: ../register.php?error=email");
-        } 
-        
-        //Association des éléments que l'user a entré à la BD
-        else {
-            if ($passwd == $passwdconf)
-            {
-                $options = [
-                    'cost' => 11,
-                ];
-                // Password du form
-
-                $pwd = $_POST['passwd'];
-                
-                $hash = password_hash($pwd, PASSWORD_BCRYPT, $options);
-
-                $req = $db->prepare('INSERT INTO user(name, firstname, sexe, age, ecole, nickname, pass, email) VALUES (:name, :firstname, :sexe, 
-                :age, :ecole, :nickname, :passwd, :mail)');
-        
-                $req->execute(array("name" => $name, "firstname" => $firstname, "sexe" => $sexe, "age"=>$age, "ecole"=>$ecole, 
-                "nickname" => $nickname, "passwd"=>$hash, "mail"=>$mail));
-               
-                if($req)
-                {
-                    if (!session_id()) 
-                        session_start();
-                
-                    header('Location: ../registerSuccess.php');
-        
-                }                
-            }
-
-            
-            else
-            {
-                echo '<p> Les mots de passe ne correspondent pas</p>';
-            }
-           
-        }
-
+    try
+    {
+        $db = connectBd();
     }
+    catch (PDOException $e)
+    {
+        exit('Erreur, problème de connexion à la base');
+    }
+
+    $nicknameValidity = testNicknameValidity($nickname);
+    $mailValidity = testEmailValidity($mail);
+
+    //redirige en GET si nom utilisateur existe déjà
+    if ($nicknameValidity) {
+        header("Location: ../register.php?error=nickname");    
+    }
+
+    //redirige en GET si mail existe déjà
+    else if ($mailValidity) {
+        header ("Location: ../register.php?error=email");
+    } 
+    
+    //Association des éléments que l'user a entré à la BD
+    else {
+        if ($passwd == $passwdconf)
+        {
+            // Password du form
+            $hash = hash("sha256",$passwd);
+            $req = $db->prepare('INSERT INTO user(name, firstname, sexe, age, ecole, nickname, pass, email) VALUES (:name, :firstname, :sexe, 
+            :age, :ecole, :nickname, :passwd, :mail)');
+    
+            $req->execute(array("name" => $name, "firstname" => $firstname, "sexe" => $sexe, "age"=>$age, "ecole"=>$ecole, 
+            "nickname" => $nickname, "passwd"=>$hash, "mail"=>$mail));
+            
+            if($req)
+            {
+                if (!session_id()) 
+                    session_start();
+            
+                header('Location: ../registerSuccess.php');
+    
+            }                
+        }
+
+        
+        else
+        {
+            echo '<p> Les mots de passe ne correspondent pas</p>';
+        }
+        
+    }
+
 
 }
 ?>

@@ -1,0 +1,33 @@
+body {
+    width:100%;
+    font-size:16px;
+    background: transparent url(../img/menu.jpg) no-repeat;
+    background-size: cover;
+    word-wrap:break-word !important;
+    font-family:"Helvetica", verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 32px;
+}
+
+input[type=text], input[type=password] {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    margin-left:42%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  

@@ -1,7 +1,7 @@
 <?php 
 header('Content-type: text/html; charset=UTF-8');
+session_start();
 
-//connection à la BD
 function connectBd () {
     $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
     /* Active le mode exception */
@@ -12,44 +12,83 @@ function connectBd () {
 }
 
 
-$badLogin=false;
+function userExists($nickname) {
+    $db = connectBd ();
+    $nickname = $_POST['nickname'];
+    $query = $db->prepare('SELECT nickname FROM User WHERE nickname = :nickname');
+    $query->bindParam(':nickname', $nickname, PDO::PARAM_STR, 42);
+    $query->execute();
+    return ($query->rowCount() == 1);
+}
 
-if(!empty($_POST['nickname']) && !empty($_POST['passwd']))
+
+
+
+$nickname = $_POST['nickname'];
+$passwd = $_POST['passwd'];
+
+if (isset($nickname,$passwd))
 {
 
-    $nickname=$_POST['nickname'];
-    $db = connectBd();
-    $query = "SELECT * FROM User WHERE nickname=\"$nickname\"";  
-    $req = $db->prepare($query);
-    $req->execute();
-    $tab=$req->fetch(PDO::FETCH_ASSOC);
-    
-      if(!empty($tab))
-      {
-          //ce que l'user a entré
-        $passwd=$tab['passwd'];
-        //le pass hash
-        $pwdhash = $_POST['passwd'];
-        
-        if (password_verify($passwd, $pwdhash)) 
+    if(userExists($nickname))
+    {
+        try
         {
-            $_SESSION['nickname']=$nickname;
-            echo 'wow';
-            //header('Location: ../index.php');
+            $db = connectBd();
         }
 
-        else{
-            $badLogin=true;
-            echo 'tg';
+        catch (PDOException $e)
+        {
+           echo 'Erreur, problème de connexion à la base';
         }
-           
+       
+        
+        $options = [
+            'cost' => 11,
+            'salt' => 111111111111111111111111111
+        ];
 
-      }
+        //On crypte à nouveau le mot de passe afin de vérif avec le bon
+        $hash = hash("sha256",$passwd);
+       
+        // Vérification des identifiants
+        $query = "SELECT * FROM user WHERE (nickname = :nickname AND pass = :hash)";   
+        $req = $db->prepare($query);
+        $req->bindParam('nickname', $nickname, PDO::PARAM_STR, 42);
+        $req->bindParam('hash', $hash , PDO::PARAM_STR, 64);
+        $req->execute();
+        $result = $req->fetch();
 
-  }
-  else
-  {
+        //Teste si le mot de passe est associé avec le nickname
+        if ($result)
+        {
+            
+            if (!session_id()) 
+            session_start();
+            $_SESSION['nickname'] = $nickname;
+            header('Location: ../index.php');
+                
+        } else 
+        {
+            echo "Mauvais mot de passe";
+        }
+        
+    } 
+    else
+    {
+        echo 'Utilisateur non inscrit';?>
+        <input type="button" value="Accueil" onclick="document.location.href='../index.php';">
+    <?php }
+
+}
+
+else
+{
     echo 'Champs vides';
-  }
+        
+}
 
- 
+    
+    
+
+
