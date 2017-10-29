@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./CSS/menu.css">
     <link rel="stylesheet" type="text/css" href="./CSS/form.css">
     <link rel="stylesheet" type="text/css" href="./CSS/modal.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
     <script src="js/main.js"></script>
 
 </head>
@@ -44,9 +44,9 @@ function myFunction() {
                 <a href="./articles.php">Articles</a>
                 <input type="checkbox" id="drop-1"/>
                 <ul>
-                    <li><a href="./valise.php">Valise</a></li>
-                    <li><a href="./france.php">France</a></li>
-                    <li><a href="./canada.php">Canada</a></li>
+                    <li><a href="./articles/valise.php">Valise</a></li>
+                    <li><a href="./articles/france.php">France</a></li>
+                    <li><a href="./articles/canada.php">Canada</a></li>
                 </ul> 
 
             </li>
@@ -91,7 +91,7 @@ function myFunction() {
             
 			<div>
                 <label for="passwd">Mot de passe*</label> 
-                <input id="passwd" name="passwd" pattern=".{2,}" required="" title="Au moins 2 caractères" type="password">
+                <input id="passwd" name="passwd" pattern=".{6,}" required="" title="Au moins 6 caractères" type="password">
                 <input type="checkbox" onclick="myFunction()"> Montrer le mot de passe
             </div>
             

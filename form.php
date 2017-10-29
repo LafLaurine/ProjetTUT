@@ -31,9 +31,9 @@ if (!isset($_SESSION['nickname'])) {
                 <a href="./articles.php">Articles</a>
                 <input type="checkbox" id="drop-1"/>
                 <ul>
-                    <li><a href="./valise.php">Valise</a></li>
-                    <li><a href="./france.php">France</a></li>
-                    <li><a href="./canada.php">Canada</a></li>
+                    <li><a href="./articles/valise.php">Valise</a></li>
+                    <li><a href="./articles/france.php">France</a></li>
+                    <li><a href="./articles/canada.php">Canada</a></li>
                 </ul> 
 
             </li>
