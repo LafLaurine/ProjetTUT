@@ -12,7 +12,8 @@ function connectBd () {
 }
 
 
-function userExists($nickname) {
+function userExists($nickname) 
+{
     $db = connectBd ();
     $nickname = $_POST['nickname'];
     $query = $db->prepare('SELECT nickname FROM User WHERE nickname = :nickname');
