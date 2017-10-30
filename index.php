@@ -18,8 +18,10 @@ header('Content-type: text/html; charset=utf-8');
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/video.css">
     <link rel="stylesheet" type="text/css" href="./CSS/modal.css">
+    <link rel="stylesheet" type="text/css" href="./CSS/profile.css">
     <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/profil.js"></script>
 
 </head>
 
@@ -94,8 +96,29 @@ header('Content-type: text/html; charset=utf-8');
               <p>Bienvenue '. $_SESSION['nickname'] .'</p>';
               echo '<p>';
             echo ' <a href="./logout.php" class="transition">Déconnexion</a></br>';
-            echo ' <a href="./form.php" class="transition">Trouve ta destination</button></a></br>';
-            echo ' <a href="./profil.php" class="transition">Profil</a></br>';
+            echo '<a href="./form.php" class="transition">Trouve ta destination</button></a></br>';
+            echo ' <a onclick="document.getElementById(\'anim\').style.display=\'block\'" class="button">Profile</a>
+            <div id="anim" class="modal">';
+            echo ' <button type="button" onclick="document.getElementById(\'anim\').style.display=\'none\'" class="cancelbtn">X</button>
+             <div class="container">
+            <div class="card">
+                <img src="./img/user.png" style="width:50%">
+                <p class="title">Session de' . $_SESSION['nickname'] . '</p>';
+                
+           echo ' <div id="myDIV" class="header">
+            <h2 style="margin:5px">To Do List</h2>
+            <input type="text" id="myInput" placeholder="A faire...">
+            <span onclick="newElement()" class="addBtn">Ajouter</span>
+            </div>
+    
+            <ul id="myUL">
+            <li class="checked">Obtenir de l\'argent</li>
+            </ul>
+               
+            </div>
+            
+            </div>';
+            echo '</div>';
             echo '</p>';
             echo '</article>';
             echo '</div>';
