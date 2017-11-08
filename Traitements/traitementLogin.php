@@ -67,7 +67,7 @@ if (isset($nickname,$passwd))
             if (!session_id()) 
             session_start();
             $_SESSION['nickname'] = $nickname;
-            header('Location: ../index.php');
+            header('Location: ../articles/index.php');
                 
         } else 
         {
@@ -78,7 +78,7 @@ if (isset($nickname,$passwd))
     else
     {
         echo 'Utilisateur non inscrit';?>
-        <input type="button" value="Accueil" onclick="document.location.href='../index.php';">
+        <input type="button" value="Accueil" onclick="document.location.href='../destination.php';">
     <?php }
 
 }

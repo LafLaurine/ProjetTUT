@@ -95,7 +95,7 @@ if (isset($nickname,$passwd,$mail))
                 if (!session_id()) 
                     session_start();
             
-                header('Location: ../registerSuccess.php');
+                header('Location: ./registerSuccess.php');
     
             }                
         }
