@@ -1,0 +1,14 @@
+3 tables : user, universite et departement
+
+Soit un utilisateur qui soumet un formulaire. Ce formulaire, grâce à un traitement en SQL, permet de savoir dans quelles universités
+il aimerait pouvoir être.
+
+Departement = matière
+
+Une matière peut être présente dans plusieurs universités
+Une université contient plusieurs matière
+
+Relation (1,n) (1,n) => prouve bien que ce sont deux entités distinctes 
+
+Université identifié par son id
+Si on met cet id en temps que clé étrangère dans la table departement ça devrait être bon ?
