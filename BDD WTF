@@ -12,3 +12,6 @@ Relation (1,n) (1,n) => prouve bien que ce sont deux entités distinctes
 
 Université identifié par son id
 Si on met cet id en temps que clé étrangère dans la table departement ça devrait être bon ?
+=> mais justement relation en n* donc techniquement faut créer une nouvelle entité
+
+Ça me fait penser à l'exercice de l'an passé avec l'artiste. 
