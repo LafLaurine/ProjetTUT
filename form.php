@@ -118,7 +118,7 @@ if (!isset($_SESSION['nickname'])) {
 			
 			<div>
 				<div>
-					<input name="submit" type="submit" value="Valider">
+					<input name="envoi" type="submit" value="Valider">
 				</div>
 			</div>
 		</form>
