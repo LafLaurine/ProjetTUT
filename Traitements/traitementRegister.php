@@ -94,8 +94,9 @@ if (isset($nickname,$passwd,$mail))
             {
                 if (!session_id()) 
                     session_start();
+                    setcookie('pseudo', $_POST['nickname'], time() + 365*24*3600, null, null, false, true); 
             
-                header('Location: ./registerSuccess.php');
+                    header( 'Location: ../destination.php?action=success');
     
             }                
         }
@@ -103,7 +104,7 @@ if (isset($nickname,$passwd,$mail))
         
         else
         {
-            echo '<p> Les mots de passe ne correspondent pas</p>';
+            header( 'Location: ../destination.php?action=wrongMDP');
         }
         
     }

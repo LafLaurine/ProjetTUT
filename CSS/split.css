@@ -12,6 +12,8 @@ html,
 body {
 	height: 100%;
 	min-height: 18em;
+	font-family: 'Lato', sans-serif;
+	
 }
 
 .frontend-side {
@@ -53,12 +55,14 @@ body {
 }
 .split-pane > div .text-content {
 	line-height: 1.6em;
-	margin-bottom: 1em;
+	margin-bottom: 3em;
 	
 }
 .split-pane > div .text-content .big {
-	font-size: 2em;
-	color:#000000;
+	line-height: 1em;
+    font-size: 3.8em;
+    color: #000000;
+    text-align: center;
 }
 .split-pane > div img {
 	height: 1.3em;
@@ -71,6 +75,8 @@ body {
 	body {
 		overflow: auto;
 	}
+
+	
 }
 .split-pane button,
 .split-pane a.button {
@@ -80,9 +86,9 @@ body {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	width: 15em;
+	width: 16em;
 	padding: 0.7em;
-	font-size: 0.5em;
+	font-size: 1.2em;
 	-moz-transition: all 0.2s ease-out;
 	-o-transition: all 0.2s ease-out;
 	-webkit-transition: all 0.2s ease-out;
@@ -106,4 +112,9 @@ body {
 .frontend-side.split-pane button:hover,
 .split-pane a.button:hover {
 	color: #3080D0;
+}
+
+#artc
+{
+	margin-top:8%;
 }

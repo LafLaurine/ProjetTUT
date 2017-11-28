@@ -1,9 +1,8 @@
-.card {
+.card1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 15em;
-    margin: auto;
+    margin-left:15%;
     text-align: center;
-   
 }
 
 .title {
@@ -11,20 +10,8 @@
     font-size: 18px;    
 }
 
-
-button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 0.5em;
-    color: white;
-    background-color: #BF2F38;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.1em;
-    box-shadow: 5px 8px 5px rgba(0, 0, 0, 0.2);
-    
+h2{
+  margin-left:19%;
 }
 
 button:hover {
@@ -86,12 +73,12 @@ button:hover {
   }
   
   .close:hover {
-    background-color: #f44336;
+    background-color: #3369ff;
     color: white;
   }
   
   .header {
-    background-color: #f44336;
+    background-color: #3369ff;
     padding: 0.5em 0.2em;
     color: white;
     text-align: center;
@@ -106,16 +93,23 @@ button:hover {
   
   .addBtn {
     padding: 10px;
-    width: 30%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
+    border-radius:1em;
+    background: #0F349B;
+    color:#FFFFFF;
+    box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
     text-align: center;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
+    
   }
   
   .addBtn:hover {
-    background-color: #bbb;
+    background-color:#3369ff;
+  }
+
+  .forma
+  {
+    margin-top: -27%;
+    margin-left: 60%;
   }

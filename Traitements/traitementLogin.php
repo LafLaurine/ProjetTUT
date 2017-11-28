@@ -71,24 +71,23 @@ if (isset($nickname,$passwd))
                 
         } else 
         {
-            echo "Mauvais mot de passe";
+            header( 'Location: ../destination.php?action=fail');
         }
         
     } 
     else
     {
-        echo 'Utilisateur non inscrit';?>
-        <input type="button" value="Accueil" onclick="document.location.href='../destination.php';">
-    <?php }
+        header( 'Location: ../destination.php?action=user');
+    }
 
 }
 
 else
 {
-    echo 'Champs vides';
+    header( 'Location: ../destination.php?action=empty');
         
 }
-
+?>
     
     
 

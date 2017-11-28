@@ -1,4 +1,23 @@
 <!DOCTYPE html>
+
+
+<script>
+
+function myFunction() {
+  var x = document.getElementById("passwd");
+  if (x!=null)
+  {
+      if (x.type === "password") {
+      x.type = "text";
+  } else {
+      x.type = "password";
+  }
+  }
+  
+}
+</script>
+
+
 <html>
 <head>
     <title>Intertional Student Planner - Projet tut</title>
@@ -12,30 +31,9 @@
 </head>
 <body>
 
-<script>
-
-window.onload = function() {
-  myFunction();
-};
-    
-function myFunction() {
-  var x = document.getElementById("passwd");
-  if (x!=null)
-  {
-      if (x.type === "password") {
-      x.type = "text";
-  } else {
-      x.type = "password";
-  }
-  }
-  
-}
-
-</script>
-
 	<div class="container">
     <div class="login-wrap">
-    <h1 class="login-header">Inscription</h1>
+    <h1 class="login-header">INSCRIPTION</h1>
 		<form action="./Traitements/traitementRegister.php" class="form" method="post">
 			<div>
                 <label for="name">Nom</label> 
@@ -71,13 +69,14 @@ function myFunction() {
             
 			<div>
                 <label for="passwd">Mot de passe*</label> 
-                <input id="passwd" name="passwd" pattern=".{6,}" required="" title="Au moins 6 caractères" type="password">
-                <a onclick="myFunction()"> Montrer le mot de passe</a>
+                <input id="passwd" name="passwd" pattern=".{6,}" required="" title="Au moins 6 caractères" type="password"></br>
+                <input onclick="myFunction()" id="showmdp" type="checkbox"> Montrer le mot de passe
             </div>
             
 			<div>
                 <label for="passwdconf">Confirmation du mot de passe*</label> 
-                <input id="passwdconf" name="passwdconf" required="" type="password">
+                <input id="passwdconf" name="passwdconf" required="" type="password"></br>
+                <input onclick="myFunction()" id="showmdp" type="checkbox"> Montrer le mot de passe
             </div>
             
 			<div>
@@ -91,7 +90,7 @@ function myFunction() {
             
 			<div>
 				<div>
-					<input name="submit" type="submit" value="S'inscrire">
+					<input name="submit" type="submit" value="S'inscrire" class="sub">
 				</div>
 			</div>
 		</form>

@@ -8,15 +8,14 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-    <title>Intertional Student Planner</title>
-    <meta charset="UTF-8">
-    <meta name="author" content="Laurine Lafontaine">
-	<meta name="description" content="Projet tut"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+<title>Intertional Student Planner</title>
+<meta charset="UTF-8">
+<meta name="author" content="Laurine Lafontaine">
+<meta name="description" content="Projet tut"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/video.css">
     <link rel="stylesheet" type="text/css" href="./CSS/modal.css">
-    <link rel="stylesheet" type="text/css" href="./CSS/profile.css">
     <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/profil.js"></script>
@@ -38,8 +37,8 @@ header('Content-type: text/html; charset=utf-8');
                 <div id="bloc">
                 <a id="info" class="button">Informations</a>
                 <div class="information" style="display:none;">
-                    <p>Projet tuteuré deuxième année de DUT MMI. </p>
-                <p>Le but de ce site est d'accompagner les étudiants dans le choix de leur échange ou période à l'étranger</p>
+                    <p class="para">Projet tuteuré deuxième année de DUT MMI. </p>
+                <p class="para">Le but de ce site est d'accompagner les étudiants dans le choix de leur échange ou période à l'étranger</p>
                 </div>
                 
 
@@ -52,7 +51,7 @@ header('Content-type: text/html; charset=utf-8');
                     
                 
             echo '<div id="form">
-            <a onclick="document.getElementById(\'anim\').style.display=\'block\'" class="button">Login</a>
+            <a onclick="document.getElementById(\'anim\').style.display=\'block\'" id="btnLog" class="button">Login</a>
             <div id="anim" class="modal">
             <div class="login-form">
             
@@ -82,62 +81,41 @@ header('Content-type: text/html; charset=utf-8');
                 </div>
                 </div>
 
-                <a onclick="document.getElementById(\'registerForm\').style.display=\'block\'" class="button">Pas encore inscrit</a>
+                <a onclick="document.getElementById(\'registerForm\').style.display=\'block\'" id="btnReg" class="button">Pas encore inscrit</a>
                 <div id="registerForm" class="modal">
                 
                 <button type="button" onclick="document.getElementById(\'registerForm\').style.display=\'none\'" class="cancelbtn">X</button>'?>
+                  
                 <?php include "./Traitements/register.php"; ?>
                
                
                <?php echo ' </div>';
+               
+               if(@$_GET['action'] == 'success' ) {
+                echo "<h2 style=\"color:#3080D0; text-align:center;\"> Votre compte a bien été enregistré, vous pouvez vous connecter </h2>";
+               }
+
+               if(@$_GET['action'] == 'fail' ) {
+                echo "<h2 style=\"color:#3080D0; text-align:center;\"> Mauvais mot de passe </h2>";
+               }
+
+               if(@$_GET['action'] == 'wrongMDP' ) {
+                echo "<h2 style=\"color:#3080D0; text-align:center;\"> Les mots de passe ne correspondent pas </h2>";
+               }
+
+               if(@$_GET['action'] == 'user' ) {
+                echo "<h2 style=\"color:#3080D0; text-align:center;\"> Utilisateur non inscrit </h2>";
+               }
+
+               if(@$_GET['action'] == 'empty' ) {
+                echo "<h2 style=\"color:#3080D0; text-align:center;\"> Champs vides </h2>";
+               }
 
                     }
                     
-                    //utilisateur connecté
-        else {
-            echo ' <section id="bla" class="container">
-            <div class="slope">
-              <article class="content"> 
-              <p>Bienvenue '. $_SESSION['nickname'] .'</p>';
-              echo '<p>';
-            echo ' <a href="./logout.php" class="transition">Déconnexion</a></br>';
-            echo '<a href="./form.php" class="transition">Trouve ta destination</button></a></br>';
-            echo ' <a onclick="document.getElementById(\'anim\').style.display=\'block\'" class="button">Profile</a>
-            <div id="anim" class="modal">';
-            echo ' <button type="button" onclick="document.getElementById(\'anim\').style.display=\'none\'" class="cancelbtn">X</button>
-             <div class="container">
-            <div class="card">
-                <img src="./img/user.png" style="width:50%">
-                <p class="title">Session de' . $_SESSION['nickname'] . '</p>';
-                
-           echo ' <div id="myDIV" class="header">
-            <h2 style="margin:5px">To Do List</h2>
-            <input type="text" id="myInput" placeholder="A faire...">
-            <span onclick="newElement()" class="addBtn">Ajouter</span>
-            </div>
-    
-            <ul id="myUL">
-            <li class="checked">Obtenir de l\'argent</li>
-            </ul>
-               
-            </div>
-            
-            </div>';
-            echo '</div>';
-            echo '</p>';
-            echo '</article>';
-            echo '</div>';
-            echo '</section>';
-        } ?>
+      ?>
         </div>
         </div>
             
-
-<footer>
-<!--<p> Mentions légales</p>-->
-</footer>
-
-
-
 </body>
 </html>

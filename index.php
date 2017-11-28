@@ -15,6 +15,7 @@ header('Content-type: text/html; charset=utf-8');
 	<meta name="description" content="Projet tut"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./CSS/video.css">
     <link rel="stylesheet" type="text/css" href="./CSS/split.css">
 </head>
