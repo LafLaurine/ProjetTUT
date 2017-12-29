@@ -18,9 +18,6 @@ body,html {
     text-align:center;
 }
 
-
-
-
 .button:hover,.transition:hover {
     opacity: 0.8;
 }
@@ -79,8 +76,7 @@ h3 a {
 
 .content
 {
-	text-align: center;
-	
+	text-align: center;	
 }
 
 input:-webkit-autofill,
@@ -175,9 +171,11 @@ select:-webkit-autofill:focus {
     border-bottom: 3px solid #3080D0;
     transition: all linear .2s;
   }
+
   footer a:hover {
     background: rgba(48, 128, 208, 0.753);
   }
+
   footer a:focus {
     outline: none;
   }
@@ -188,6 +186,7 @@ select:-webkit-autofill:focus {
     color: rgba(51, 51, 51, 0.7);
   }
   
+
   @media screen and (max-width: 640px) {
     #info
     {
@@ -207,7 +206,23 @@ select:-webkit-autofill:focus {
     
     h1
     {
-        font-size: 26px !important;
+        font-size: 23px !important;
+        margin-top:0px !important;
+    }
+
+    #grand
+    {
+      margin-left: 20% !important;
+    }
+
+    #containerForm
+    {
+      margin-left: 12% !important;
+    }
+
+    #contactText
+    {
+      margin-left:35% !important;
     }
 
     
@@ -220,6 +235,11 @@ select:-webkit-autofill:focus {
 	padding: 5px 15px;
 }
 
+#contactText
+{
+  margin-left:45%;
+}
+
 #middle {
 	width: 294px; 
 	float: left;
@@ -227,7 +247,7 @@ select:-webkit-autofill:focus {
 	margin: 0px 5px 5px 5px;
 }
 
-#sidebar {
+.sidebar {
 	width: 270px;
 	padding: 5px 15px;
 	float: left;
@@ -254,7 +274,7 @@ footer {
 		float: right;
 	}
 	
-	#sidebar {
+	.sidebar {
 		clear: both;
 		padding: 1% 4%;
 		width: auto;
@@ -263,7 +283,65 @@ footer {
 
 	header, footer {
 		padding: 1% 4%;
-	}
+  }
+  
+  #testimonials
+  {
+    display:none;
+  }
+
+  .wrap
+  {
+    left: 64% !important;
+    width: 40% !important;
+  }
+
+  nav ul ul li {
+    margin-left: 0% !important;
+    font-size:17px;
+}
+
+.hamburger{
+  background:none;
+  margin-left:83%;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#999;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+  display: block !important;
+}
+
+nav ul {
+  background-color: grey;
+}
+
+.toggle {
+  padding: 0px 0px !important;
+  color: #CCC !important;
+  font-size: 23px !important;
+}
+
+nav ul ul {
+  color: #ccc !important;
+}
+
+#avatar
+{
+  display:none;
+}
+
+#formul {
+  position: relative !important;
+  margin-left: 15% !important;
+  margin-top: 0% !important;
+}
+
+
 }
 
 /* for 700px or less */
@@ -280,7 +358,7 @@ footer {
 		margin-left: 0px;
 	}
 	
-	#sidebar {
+	.sidebar {
 		width: auto;
 		float: none;
 	}
@@ -296,13 +374,16 @@ footer {
 	h1 {
 		font-size: 2em;
 	}
-	#sidebar {
-		display: none;
-	}
+	
 
 }
 
 #grand
 {
   margin-left: 5%;
+}
+
+.hamburger
+{
+  display: none;
 }

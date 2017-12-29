@@ -3,11 +3,11 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 
-if (!isset($_SESSION['nickname'])) {
+if (!isset($_SESSION['pseudo'])) {
    
         echo "<script type=\"text/javascript\">
         alert(\"Utilisateur non connecté\");
-        location=\"index.php\";
+        location=\"../destination.php\";
         </script>";
 }
 
@@ -34,51 +34,49 @@ if (!isset($_SESSION['nickname'])) {
 
 
 
-<label for="drop" class="toggle">Menu</label>
-<input type="checkbox" id="drop" />
-    <ul class="menu">
-        <li><a href="./">Home</a></li>
-        <li>
-            
-            <label for="drop-1" class="toggle">Articles +</label>
-            <a href="index.php">Articles</a>
-            <input type="checkbox" id="drop-1"/>
-            <ul id="drop">
-                <li><a href="valise.php">Valise</a></li>
-                <li><a href="france.php">France</a></li>
-                <li><a href="canada.php">Canada</a></li>
-            </ul> 
 
-        </li>
-       
-		<li><a href="./formations.php">Formations</a></li>
-		<li><a href="./contact.php">Contact</a></li>
-		<li><a href="./profil.php">Profil</a></li>
+<button class="hamburger">&#9776;</button>
+<ul class="menu">
+	<li><a href="./">Home</a></li>
+	<li>
 		
-	</ul>
+		<label for="drop-1" class="toggle">Articles +</label>
+		<a href="index.php">Articles</a>
+		<input type="checkbox" id="drop-1"/>
+		<ul id="drop">
+			<li><a href="articles.php">Pays</a></li>
+			<li><a href="articles_domaine.php">Domaine</a></li>
+		</ul> 
+
+	</li>
+   
+	<li><a href="./formations.php">Formations</a></li>
+	<li><a href="./contact.php">Contact</a></li>
+	<li><a href="./profil.php">Profil</a></li><img src="../img/avatar.jpg" id="avatar"/>
+	<?php if (!isset($_SESSION['pseudo'])) {
+		echo '<a href="../destination.php" id="seCo">Se connecter</a>';
+	}
+	
+	else if (isset($_SESSION['pseudo'])) {
+	echo '<a href="./form.php" id="formul">Formulaire</a>';
+	echo '<a href="../Traitements/logout.php" id="deco">Déconnexion</a></br>';
+	}?>
+	
+</ul>
 
 </nav>
 
-
-
-
-<div class="wrap">
-   <div class="search">
-      <input type="text" class="searchTerm" placeholder="Rechercher">
-      <button type="submit" class="searchButton">
-        <img src="../img/search.png">
-     </button>
-   </div>
-</div>
-
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
 <h2>Mon profil</h2>
+<?php 
 
+$pseudo = $_SESSION['pseudo']; ?>
 
 <div class="containerProf">
             <div class="card1">
                 <img src="../img/user.png" style="width:50%">
-                <p class="title">Session de <?php  $_SESSION['nickname']  ?> </p>
+                <p class="title">Session de <?php print_r($pseudo); ?> </p>
+               
                 
            <div id="myDIV" class="header">
             <h2 style="margin:5px">To Do List</h2>
@@ -95,11 +93,7 @@ if (!isset($_SESSION['nickname'])) {
             <div class="forma">
             <h2>Formulaire</h2>
             <h4 style="color:black";>Résultats</h4>
-            <ul>
-            <li>Canada</li>
-           <li>→ UQAC</li>
-            → BIA
-            </ul>
+            <a href="./form.php"><button class="button" value="modif">Modifier le formulaire</button></a>
             </div>
 
             

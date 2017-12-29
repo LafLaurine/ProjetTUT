@@ -26,8 +26,7 @@ header('Content-type: text/html; charset=utf-8');
 
 
 
-<label for="drop" class="toggle">Menu</label>
-<input type="checkbox" id="drop" />
+<button class="hamburger">&#9776;</button>
 <ul class="menu">
 	<li><a href="./">Home</a></li>
 	<li>
@@ -36,9 +35,8 @@ header('Content-type: text/html; charset=utf-8');
 		<a href="index.php">Articles</a>
 		<input type="checkbox" id="drop-1"/>
 		<ul id="drop">
-			<li><a href="valise.php">Canada</a></li>
-			<li><a href="france.php">France</a></li>
-			<li><a href="canada.php">États-Unis</a></li>
+			<li><a href="articles.php">Pays</a></li>
+			<li><a href="articles_domaine.php">Domaine</a></li>
 		</ul> 
 
 	</li>
@@ -46,25 +44,19 @@ header('Content-type: text/html; charset=utf-8');
 	<li><a href="./formations.php">Formations</a></li>
 	<li><a href="./contact.php">Contact</a></li>
 	<li><a href="./profil.php">Profil</a></li><img src="../img/avatar.jpg" id="avatar"/>
-	<a href="./form.php" id="formul">Formulaire</a>
-	<?php if (isset($_SESSION['nickname'])) {
+	<?php if (!isset($_SESSION['pseudo'])) {
+		echo '<a href="../destination.php" id="seCo">Se connecter</a>';
+	}
+	
+	else if (isset($_SESSION['pseudo'])) {
+	echo '<a href="./form.php" id="formul">Formulaire</a>';
 	echo '<a href="../Traitements/logout.php" id="deco">Déconnexion</a></br>';
 	}?>
 	
 </ul>
 
-
-
 </nav>
 
-<div class="wrap">
-<div class="search">
-  <input type="text" class="searchTerm" placeholder="Rechercher">
-  <button type="submit" class="searchButton">
-	<img src="../img/search.png">
- </button>
-</div>
-</div>
 
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
 
@@ -79,7 +71,7 @@ header('Content-type: text/html; charset=utf-8');
 				<p class="author">Florian, étudiant</a></p>
 			</li>
 			<li>
-				<blockquote>Lorem ipsum</blockquote>
+				<blockquote>Quel site fabuleux !</blockquote>
 				<p class="author">Jean, prof</a></p>
 			</li>
         </ul>
@@ -206,6 +198,7 @@ header('Content-type: text/html; charset=utf-8');
 		<p style='color:black';>Copyright © 2017 | International Student Planner</p>
 		<p><a href="../mention.php" target="_blank">Mentions légales</a></p>
 		<p><a href="../partenaires.php"  target="_blank">Partenaires</a></p>
+		
 	</footer>
 	
 

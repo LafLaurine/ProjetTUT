@@ -45,24 +45,24 @@ header('Content-type: text/html; charset=utf-8');
                 <?php 
                 //si user pas connecté
                    
-                    if (!isset($_SESSION['nickname'])) {
+                    if (!isset($_SESSION['pseudo'])) {
 
 
                     
                 
             echo '<div id="form">
-            <a onclick="document.getElementById(\'anim\').style.display=\'block\'" id="btnLog" class="button">Login</a>
+            <a onclick="document.getElementById(\'anim\').style.display=\'block\'" id="btnLog" class="button">CONNEXION</a>
             <div id="anim" class="modal">
             <div class="login-form">
             
             <button type="button" onclick="document.getElementById(\'anim\').style.display=\'none\'" class="cancelbtn">X</button>
             <div class="login-top">
-                <h1 class="login-header">LOGIN</h1>
+                <h1 class="login-header">CONNEXION</h1>
                 <form action="./Traitements/traitementLogin.php" method="post">
-                    <input type="text" id="user-name" name="nickname" />
+                    <input type="text" id="user-name" name="pseudo" />
                     <label for="user-name" class="input-prefix">Pseudo</label>
                     
-                    <input type="password" id="password" name="passwd" />
+                    <input type="password" id="password" name="pass" />
                     <label for="password" class="input-prefix">Mot de passe</label>
                     
                     <input type="submit" id="sign-in" name="Sign-in" value="Se connecter" />
@@ -81,7 +81,7 @@ header('Content-type: text/html; charset=utf-8');
                 </div>
                 </div>
 
-                <a onclick="document.getElementById(\'registerForm\').style.display=\'block\'" id="btnReg" class="button">Pas encore inscrit</a>
+                <a onclick="document.getElementById(\'registerForm\').style.display=\'block\'" id="btnReg" class="button">INSCRIPTION</a>
                 <div id="registerForm" class="modal">
                 
                 <button type="button" onclick="document.getElementById(\'registerForm\').style.display=\'none\'" class="cancelbtn">X</button>'?>

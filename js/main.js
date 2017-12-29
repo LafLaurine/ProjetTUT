@@ -51,3 +51,20 @@ $(function(){
   next();
 });
 
+$( document ).ready(function() {
+    
+
+    $( ".hamburger" ).click(function() {
+    $( ".menu" ).slideToggle( "slow", function() {
+    $( ".hamburger" ).hide();
+    });
+    });
+
+    $('.domContent').hide();
+    $('.pays,.domn').click(function(){
+        $('.paysContent,.domContent').toggle();
+    });
+
+    });
+    
+

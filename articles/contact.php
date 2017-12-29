@@ -26,45 +26,40 @@ header('Content-type: text/html; charset=utf-8');
 
 
 
-<label for="drop" class="toggle">Menu</label>
-<input type="checkbox" id="drop" />
+
+<button class="hamburger">&#9776;</button>
 <ul class="menu">
-    <li><a href="./">Home</a></li>
-    <li>
-        
-        <label for="drop-1" class="toggle">Articles +</label>
-        <a href="index.php">Articles</a>
-        <input type="checkbox" id="drop-1"/>
-        <ul id="drop">
-            <li><a href="valise.php">Valise</a></li>
-            <li><a href="france.php">France</a></li>
-            <li><a href="canada.php">Canada</a></li>
-        </ul> 
+	<li><a href="./">Home</a></li>
+	<li>
+		
+		<label for="drop-1" class="toggle">Articles +</label>
+		<a href="index.php">Articles</a>
+		<input type="checkbox" id="drop-1"/>
+		<ul id="drop">
+			<li><a href="articles.php">Pays</a></li>
+			<li><a href="articles_domaine.php">Domaine</a></li>
+		</ul> 
 
-    </li>
+	</li>
    
-<li><a href="./formations.php">Formations</a></li>
-<li><a href="./contact.php">Contact</a></li>
-<li><a href="./profil.php">Profil</a></li>
-
+	<li><a href="./formations.php">Formations</a></li>
+	<li><a href="./contact.php">Contact</a></li>
+	<li><a href="./profil.php">Profil</a></li><img src="../img/avatar.jpg" id="avatar"/>
+	<?php if (!isset($_SESSION['pseudo'])) {
+		echo '<a href="../destination.php" id="seCo">Se connecter</a>';
+	}
+	
+	else if (isset($_SESSION['pseudo'])) {
+	echo '<a href="./form.php" id="formul">Formulaire</a>';
+	echo '<a href="../Traitements/logout.php" id="deco">Déconnexion</a></br>';
+	}?>
+	
 </ul>
 
 </nav>
 
-
-
-
-<div class="wrap">
-<div class="search">
-  <input type="text" class="searchTerm" placeholder="Rechercher">
-  <button type="submit" class="searchButton">
-    <img src="../img/search.png">
- </button>
-</div>
-</div>
-
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
-<h2 style="margin-left:50%;">Contact</h2>
+<h2 id="contactText">Contact</h2>
 
 <?php
 
@@ -148,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST') {
   <div class='message'>
     <textarea placeholder='Votre message'></textarea>
   </div>
-    <input type="submit" name="submit" value="Envoyer" />
+    <input type="submit" name="submit" value="Envoyer" class="button" />
 </form>
 </div>
 

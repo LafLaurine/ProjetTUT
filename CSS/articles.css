@@ -34,6 +34,23 @@
 	.card {
 	  width: 100%;
 	}
+
+	
+  .card:hover .card-meta, .card:focus .card-meta 
+  {
+    max-height: 2em !important;
+	}
+
+	.imageArticle
+	{
+		width:100% !important;
+	}
+
+	.searchTerm, .searchButton
+	{
+		display:none !important;
+	}
+	
   }
   @media (min-width: 700px) {
 	.card {
@@ -253,10 +270,17 @@ figcaption {
 .imageArticle
 {
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.185);
-	width: 30%;
+	width: 40%;
 }
 
 .imageArticle:hover{
 	transform: translateY(-0.5rem) scale(1.0125);
 	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+.formaChoice
+{
+	display: inline-block;
+	text-align: center;
+	left:40%;
 }
