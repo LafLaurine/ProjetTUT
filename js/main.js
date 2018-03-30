@@ -1,70 +1,44 @@
-   
-    $("#info").click(function () {
-        var $target = $('.information'),
-            $info = $(this);
-
-        $target.slideToggle(200, function () {
-            $info.text(($target.is(':visible') ? 'Informations' : 'Informations'));
-           
-        });
-        
-        /* 
-
-    $('.card__share > a').on('click', function(e){ 
-		e.preventDefault()
-   		$(this).parent().find( 'div' ).toggleClass( 'card__social--active' );
-		$(this).toggleClass('share-expanded');
-    }); */
-
-    
-  
-
-/*     $("body").css("display","none");
-    
-        $("body").fadeIn(1000);
-        
-        $("a.transition").click(function(event){
-            event.preventDefault();
-            linkLocation = this.href;
-            $("body").fadeOut(200, redirectPage);		
-        });
-            
-        function redirectPage() {
-            window.location = linkLocation;
-        } */
-
-    
-        
-
-});
-
-$(function(){
+// Hover sur les articles
+$(function() {
     var items = (Math.floor(Math.random() * ($('#testimonials li').length)));
     $('#testimonials li').hide().eq(items).show();
-    
-  function next(){
-        $('#testimonials li:visible').delay(3000).fadeOut('slow',function(){
+
+    function next() {
+        $('#testimonials li:visible').fadeOut('slow', function() {
             $(this).appendTo('#testimonials ul');
-            $('#testimonials li:first').fadeIn('slow',next);
-    });
-   }
-  next();
+            $('#testimonials li:first').fadeIn('slow', next);
+        });
+    }
+    next();
 });
 
-$( document ).ready(function() {
-    
 
-    $( ".hamburger" ).click(function() {
-    $( ".menu" ).slideToggle( "slow", function() {
-    $( ".hamburger" ).hide();
-    });
-    });
+//Menu responsive
+$(document).ready(function() {
 
-    $('.domContent').hide();
-    $('.pays,.domn').click(function(){
-        $('.paysContent,.domContent').toggle();
+    $(".button-collapse").sideNav();
+
+    $(".hamburger").click(function() {
+        $(".menu").slideToggle("slow", function() {
+            $(".hamburger").hide();
+        });
     });
 
-    });
-    
+    $(".email-signup").hide();
 
+
+    $("#signup-box-link").click(function() {
+        $(".email-login").fadeOut(100);
+        $(".email-signup").delay(100).fadeIn(100);
+        $("#login-box-link").removeClass("active");
+        $("#signup-box-link").addClass("active");
+    });
+
+    $("#login-box-link").click(function() {
+        $(".email-login").delay(100).fadeIn(100);;
+        $(".email-signup").fadeOut(100);
+        $("#login-box-link").addClass("active");
+        $("#signup-box-link").removeClass("active");
+    });
+
+});

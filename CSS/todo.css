@@ -1,0 +1,115 @@
+#container {
+    width: 15%;
+    margin: auto;
+    text-align: center;
+    float: left;
+    margin-left: 15%;
+}
+
+textarea#description {
+    width: 100%;
+    max-width: 460px;
+    min-height: 120px;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 36px;
+}
+
+textarea.newDescription {
+    width: 98%;
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.137);
+    font-size: 20px;
+    line-height: 40px;
+    padding: 0 0 10px 10px;
+    text-shadow: 1px 1px 2px #000;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+}
+
+#tabs {
+    overflow: hidden;
+    padding: 0;
+}
+
+#tabs li {
+    display: inline;
+    margin-right: 5px;
+    padding: 5px 5px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+#tabs li:hover {
+    background: #e3e3e3;
+}
+
+#tabs li.selected a {
+    color: #292929;
+}
+
+#tabs li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 21px;
+    line-height: 11px;
+    padding: 7px 10px;
+    display: block;
+}
+
+#main {
+    padding: 0 4px;
+    background: #3080D0;
+    border-radius: 10px;
+}
+
+#main h4 {
+    margin: 0;
+    font-size: 16px;
+    background: #3080D0;
+    padding: 8px;
+    color: #000000;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 2px 6px 0 #555;
+    box-shadow: 0 2px 6px 0 #000;
+}
+
+div.item {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 1);
+    margin: 15px 0;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+}
+
+div.item a:hover {
+    background: #3080D0;
+    font-size: 18px;
+}
+
+.addEntry:hover {
+    background: #3080D0;
+    font-size: 18px;
+}
+
+#container #main div.options {
+    margin: 4px 4px;
+    overflow: hidden;
+}
+
+#addNewEntry h2 {
+    margin: 14px 50px;
+    padding: 0;
+}
+
+#addEntry {
+    width: 160px;
+    padding: 10px;
+    font-size: 18px;
+}

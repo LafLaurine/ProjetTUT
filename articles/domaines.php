@@ -1,30 +1,28 @@
-<?php
-
+<?php 
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-<title>Intertional Student Planner - Projet tut</title>
+<title>International Student Planner - Projet tut</title>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../img/fav_logo.png"/>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../CSS/modal.css">
-<link rel="stylesheet" type="text/css" href="../CSS/profil.css">
 <link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
+<link rel="stylesheet" type="text/css" href="../CSS/profil.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../CSS/articles.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../js/main.js"></script>
-<script src="../js/materialize.js"></script>
+<script type="text/javascript" src="../js/materialize.js"></script>
 <script src="../js/profil.js"></script>
 
 </head>
+
 <script>
 	$(document).ready(function)
 	{
@@ -95,24 +93,22 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
   </div>
 </nav>
 
-<main>
 
+<main>
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
 
 
-<?php try
+<?php 
+ try
 	{
-		//Si il y a un article
-		if (isset($_GET['article'])) 
+        	if (isset($_GET['article'])) 
 		{
 			$db = connectBd();
-			//On récupère tous les articles associés à un pays
 			$req=$db->prepare('SELECT DISTINCT * FROM article
-			JOIN pays ON article.id_pays=pays.id_pays WHERE id_article=:id_article');
+			JOIN domaine ON article.id_domaine=domaine.id_domaine WHERE id_article=:id_article');
 			$req->bindValue(":id_article",$_GET["article"],PDO::PARAM_STR);
 			$req->execute();
 
-			//On affiche le contenu de l'article + un retour à la page
 			if($data = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				echo '
@@ -129,96 +125,92 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 		else
 		{	?>
 			
-			<table class="highlight bordered centered">
+			<table class="highlight bordered centered" style="margin-left: -3.7em;">
 			<thead>
 				<tr>
-				<th>Pays</th>
+				<th>Domaine</th>
 				<th>Articles</th>
 				</tr>
 			</thead>
 			<tbody>
 			<tr>
-			<?php
-			$db = connectBd();
-			$req=$db->prepare('SELECT DISTINCT * FROM pays');
+			<?php $db = connectBd();
+			$req=$db->prepare('SELECT DISTINCT * FROM domaine');
 			$req->execute();
 
 			while( $data = $req->fetch(PDO::FETCH_ASSOC))
 			{
+				
 
-				$req2=$db->prepare('SELECT DISTINCT * FROM article WHERE id_pays=:id_pays');
-				$req2->bindValue(":id_pays",$data["id_pays"],PDO::PARAM_INT);
+				$req2=$db->prepare('SELECT DISTINCT * FROM article WHERE id_domaine=:id_domaine');
+				$req2->bindValue(":id_domaine",$data["id_domaine"],PDO::PARAM_INT);
 				$req2->execute();
 
 				while( $article = $req2->fetch(PDO::FETCH_ASSOC))
 				{
-					echo '<td>'. $data["nom_pays"]. '</td>';	
-					echo "<td><a href=\"articles.php?article={$article['id_article']}\">". $article["titre"]. '</td></tr>';	
+				
+          echo "<td><a href=\"domaines.php?article={$article['id_article']}\">". $article["titre"]. '</td>';	
+          echo '<td>'. $data["nom_domaine"]. '</td></tr>';	
+				
 				}
-
 				
 			}
 		
 		
-	
-	
- ?>
+	 ?>
 
-	</tbody>
-	</table>
 
-	</br></br>
 
-				
-	<table class="highlight bordered centered" style="margin-left: -3.3rem;">
-			<thead>
-				<tr>
-				<th>Pays</th>
-				<th>Formations</th>
-				</tr>
-			</thead>
-			<tbody>
-			<tr>
+</tbody>
+</table></br></br>
 
+<table class="highlight bordered centered">
+	<thead>
+		<tr>
+		<th>Formations</th>
+		<th>Domaine</th>
+		</tr>
+	</thead>
+<tbody>
+<tr>
 <?php 
-		$db = connectBd();
-		$req=$db->prepare('SELECT DISTINCT * FROM pays');
-		$req->execute();
+	$db = connectBd();
+  $req=$db->prepare('SELECT DISTINCT * FROM composante');
+  $req->execute();
 
-		while( $data = $req->fetch(PDO::FETCH_ASSOC))
-		{
-			
-			/* On sélectionne les formations dans la base de donnéees et on effectue un tri selon pays */
-            $req2=$db->prepare('SELECT DISTINCT * FROM formation
-            JOIN composante ON formation.id_composante=composante.id_composante
-            JOIN campus ON composante.id_campus = campus.id_campus
-            JOIN ville ON campus.id_ville = ville.id_ville
-            JOIN pays ON ville.id_pays = pays.id_pays
-            WHERE ville.id_pays=:id_pays');
-            $req2->bindValue(":id_pays",$data["id_pays"],PDO::PARAM_INT);
-            $req2->execute();
-    
-            while( $forma = $req2->fetch(PDO::FETCH_ASSOC))
-            {
-				echo '<td>'. $data["nom_pays"]. '</td>';	
-				echo '<td>'. '<a style="text-decoration:underline;" target="_blank" href='.$forma["url"].'>'. $forma["nom_formation"].'</a></td></tr>';
-            } 
-		}
-
-	}
+  while( $data = $req->fetch(PDO::FETCH_ASSOC))
+  {
+          
+  /* On sélectionne les formations dans la base de donnéees et on effectue un tri selon composante */
+  $req2=$db->prepare('SELECT DISTINCT * FROM formation
+      LEFT JOIN composante ON formation.id_composante=composante.id_composante
+      WHERE formation.id_composante=:id_composante');
+      $req2->bindValue(":id_composante",$data["id_composante"],PDO::PARAM_INT);
+  $req2->execute();
+  
+          while( $compo = $req2->fetch(PDO::FETCH_ASSOC))
+          {
+      echo '<td>'. '<a style="text-decoration:underline;" target="_blank" href='.$compo["url"].'>'. $compo["nom_formation"].'</a></td>';
+      echo '<td>'. $data["nom_composante"]. '</td></tr>';
+          }
+  }
+		
+	
+  }
 }
 	catch (Exception $e)
 	{
 		$e->getMessage();
 		echo $e;        
-	}
-?>
+	} ?>
+
 
 </tbody>
 </table>
 
-</main>
 
+</main>
+	
 <footer class="page-footer blue darken-2">
 <div class="container">
   <div class="row">
@@ -248,9 +240,5 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 </div>
 </footer>
 
-
-
-
 </body>
-
 </html>

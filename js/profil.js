@@ -1,3 +1,5 @@
+/* Gestion de la to-do list*/
+
 var myNodelist = document.getElementsByTagName("li");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -54,3 +56,39 @@ function newElement() {
     }
   }
 }
+
+function loadNewProfilePic(input)
+{
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#profile_pic').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+}
+
+window.onload=function()
+{
+  $(function() { 
+    // Delete anchor tag clicked
+    $('a.deleteEntryAnchor').click(function() { 
+      var thisparam = $(this);
+      thisparam.parent().parent().find('p').text('Effacement...'); 
+      $.ajax({ 
+          type: 'POST', 
+          url: "../Traitements/delete.php",
+          data: "id=" + thisparam.data().id, 
+            
+          success: function(results){ 
+              thisparam.parent().parent().fadeOut('slow'); 
+          } 
+      }); 
+      return false; 
+    });
+    });
+
+    
+
+}
+

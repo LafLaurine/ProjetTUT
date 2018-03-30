@@ -1,16 +1,8 @@
-<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+<!-- Traitement de l'inscription -->
 
 <?php
 
-//connection à la BD
-function connectBd () {
-    $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
-    /* Active le mode exception */
-    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-    /* Indique le charset */
-    $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-    return new PDO('mysql:host=localhost;dbname=projettut', 'root', '',$pdo_options);
-}
+require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 
 //teste si le nom d'utilisateur est pris ou non
 function testpseudoValidity ($pseudo) {
@@ -24,7 +16,7 @@ function testpseudoValidity ($pseudo) {
 }
 
 //test si le mail est pris ou non
-function testEmailValidity ($email) {
+function testEmailValidity ($mail) {
     $db = connectBd ();
     $req = $db->query("SELECT * FROM user WHERE email = '$mail';");
     $result = $req->fetch();
@@ -63,12 +55,12 @@ try
 
         //redirige en GET si nom utilisateur existe déjà
         if ($pseudoValidity) {
-            header("Location: ../register.php?error=pseudo");    
+            header("Location: ./register.php?error=pseudo");    
         }
 
         //redirige en GET si mail existe déjà
         else if ($mailValidity) {
-            header ("Location: ../register.php?error=email");
+            header ("Location: ./register.php?error=email");
         } 
 
         //Association des éléments que l'user a entré à la BD
@@ -81,7 +73,8 @@ try
                 $hash = hash("sha256",$pass);
                 
                 $req = $db->prepare('INSERT INTO user(pseudo, pass, prenom1, prenom2, nom1, nom2, email, sexe, date_naiss) VALUES (?,?,?,?,?,?,?,?,?)');
-
+                echo 'NTM';
+                
                 $req->bindParam(1, $pseudo);
                 $req->bindParam(2, $hash);
                 $req->bindParam(3, $prenom1);
@@ -90,18 +83,17 @@ try
                 $req->bindParam(6, $nom2);
                 $req->bindParam(7, $mail);
                 $req->bindParam(8, $sexe);
-                $req->bindParam(9, $date_naiss);
-                //var_dump($pseudo);  
+                $req->bindParam(9, $date_naiss); 
+                //là c'est vide ????
                 $req->execute();
-
-                
-                
+                var_dump($req);
                 
                
                 if($req)
                 {
                     if (!session_id())
                     {
+                        //Cookie
                         session_start();
                         setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true); 
                 
@@ -122,6 +114,7 @@ try
 
 catch (PDOException $e)
 {
-    exit('Erreur, problème de connexion à la base');
+    //exit('Erreur, problème de connexion à la base');
+    echo $e->getMessage();
 }
 ?>

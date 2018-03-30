@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+<!-- Déconnexion -->
 
 <?php
 session_start();

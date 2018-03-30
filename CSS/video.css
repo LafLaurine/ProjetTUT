@@ -1,9 +1,5 @@
 video { 
       position: fixed;
-      min-width: 100%; 
-      min-height: 100%;
-      width: auto; 
-      height: auto;
       z-index: -100;
       background: url('../img/screen.jpg') no-repeat;
       background-size: cover;
@@ -12,16 +8,14 @@ video {
 
   body
   {
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
   }
 
   #video {
-    background: rgba(0, 0, 0, 0.53);
     padding: 1rem;
     width: 100%;
     font-size: 1em;
-    height: 100%;
-    overflow:hidden;
   }
 
   #info{

@@ -1,32 +1,30 @@
-
 .modal {
-    display: none; 
-    position: absolute; 
+    display: none;
+    position: absolute;
     z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    text-align:center;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 9em auto; 
+    margin: 9em auto;
     border: 1px solid #888;
-    width: 100%; 
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
-
 
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    border:none;
+    border: none;
+    margin-left: -3%;
 }
-
 
 .animate {
     -webkit-animation: animatezoom 0.6s;
@@ -34,17 +32,24 @@
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
 
 @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
-.login-form
-{
+.login-form {
     position: relative;
     display: block;
     overflow: hidden;
@@ -54,31 +59,29 @@
     box-shadow: 0 0 20px 1px #222;
 }
 
-.login-form .login-top, .login-wrap
-{
+.login-form .login-top,
+.login-wrap {
     position: relative;
     z-index: 11;
     background-color: #FFF;
     padding: 10px 45px;
 }
 
-.login-form .login-top h1
-{
-    font-family:"Helvetica", verdana, sans-serif;
+.login-form .login-top h1 {
+    font-family: "Helvetica", verdana, sans-serif;
     font-weight: normal;
     font-size: 40px;
     color: #2fbee8;
     letter-spacing: -1.7px;
 }
 
-.login-form input
-{
+.login-form input {
     display: block;
-    font-family:"Helvetica", verdana, sans-serif;
+    font-family: "Helvetica", verdana, sans-serif;
 }
 
-.login-form input[type="text"], .login-form input[type="password"]
-{
+.login-form input[type="text"],
+.login-form input[type="password"] {
     margin: 10px auto;
     border-radius: 3px;
     padding: 10px;
@@ -91,9 +94,7 @@
     transition: 0.3s all;
 }
 
-
-.login-form .input-prefix
-{
+.login-form .input-prefix {
     font-family: Montserrat;
     font-weight: bold;
     position: absolute;
@@ -105,8 +106,7 @@
     transition: 0.3s all;
 }
 
-.login-form .input-prefix:after
-{
+.login-form .input-prefix:after {
     content: '';
     position: relative;
     display: block;
@@ -118,21 +118,18 @@
     transition: 0.3s all;
 }
 
-.login-form input:focus + .input-prefix
-{
+.login-form input:focus+.input-prefix {
     color: #0aa4d1;
 }
 
-.login-form input:focus + .input-prefix:after
-{
+.login-form input:focus+.input-prefix:after {
     width: 100%;
 }
 
-.login-form input[type="submit"]
-{
+.login-form input[type="submit"] {
     border: none;
     background-image: linear-gradient(135deg, #22bae7 70%, #10acd9);
-    color:white;
+    color: white;
     font-weight: 700;
     padding: 12px 47px;
     margin-left: 40%;
@@ -142,33 +139,29 @@
     transition: 0.3s all;
 }
 
-.login-form input[type="submit"]:hover,.login-form input[type="submit"]:focus
-{
+.login-form input[type="submit"]:hover,
+.login-form input[type="submit"]:focus {
     box-shadow: 0 0px 15px 2px #CCC;
 }
 
-.login-form .login-bottom
-{
+.login-form .login-bottom {
     z-index: 10;
     position: relative;
     padding: 20px;
     background-color: #56596a;
 }
 
-.login-form .login-bottom a
-{
+.login-form .login-bottom a {
     color: #CCC;
     font-size: 13px;
     text-decoration: none;
 }
 
-.login-form .login-bottom a:hover
-{
+.login-form .login-bottom a:hover {
     text-decoration: underline;
 }
 
-.login-form .login-bottom:after
-{
+.login-form .login-bottom:after {
     content: '';
     position: absolute;
     top: 100%;
@@ -181,117 +174,100 @@
 
 .login-wrap {
     margin: 0 auto;
-    background:white;
+    background: white;
     border-radius: 5px;
     width: 60%;
     box-shadow: 0 0 20px 1px #222;
-  }
+}
 
-  input:focus {
-    transform: scale3d(1.06,1.06,1.06);
-  }
+input:focus {
+    transform: scale3d(1.06, 1.06, 1.06);
+}
 
- .login-wrap .form button {
+.login-wrap .form button {
     width: 70%;
     margin-left: 10%;
     margin-bottom: 25px;
     height: 40px;
     border-radius: 5px;
     outline: 0;
-  }
-  
- .login-wrap .form input[type="text"],
+}
+
+.login-wrap .form input[type="text"],
 .login-wrap .form input[type="password"],
-.login-wrap .form input[type="email"]{
+.login-wrap .form input[type="email"] {
     margin: 10px auto;
     border-radius: 3px;
     padding: 7px;
     border: 1px solid #CCC;
     box-shadow: 0 1px 2px 1px #F5F5F5 inset;
     background-color: #FEFEFE;
-    color:black;
+    color: black;
     width: 40%;
     display: block;
     font-weight: 700;
     transition: 0.3s all;
-  }
+}
 
- .sub {
+.sub {
     border: none;
     background-image: linear-gradient(135deg, #22bae7 70%, #10acd9);
-    color:white;
+    color: white;
     font-weight: 700;
     padding: 12px 47px;
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s all;
-  }
+}
 
-
-
-  .login-header
-  {
+.login-header {
     font-family: "Helvetica", verdana, sans-serif;
     font-weight: normal;
     font-size: 40px;
     color: #2fbee8;
     letter-spacing: -1.7px;
-  }
+}
 
+#btnLog,
+#btnReg {
+    margin-top: 7%;
+}
 
-  #btnLog,#btnReg
-  {
-      margin-top:7%;
-  }
+#btnLog {
+    margin-left: 39%;
+}
 
-  #btnLog
-  {
-      margin-left:39%;
-  }
-
-  @media screen and (max-width: 640px) {
-    #btnLog
-    {
-      margin-left:1%;
+@media screen and (max-width: 640px) {
+    #btnLog {
+        margin-left: 1%;
     }
-
-    .login-form{
-        width:100%;
+    .login-form {
+        width: 100%;
         margin-top: 18%;
     }
-
-    .login-form input[type="text"], .login-form input[type="password"] {
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
         margin-left: 40%;
     }
-
     .login-wrap {
-       width:100% !important;
-       overflow-x:hidden;
+        width: 100% !important;
+        overflow-x: hidden;
     }
-
-    .login-form .login-top, .login-wrap {
+    .login-form .login-top,
+    .login-wrap {
         padding: 10px !important;
     }
-
     .login-form .login-bottom {
         margin-top: -6%;
     }
-
-    #registerForm
-    {
+    #registerForm {
         overflow-x: hidden;
     }
-
-   
-
-  
 }
-  
 
-  #showmdp
-  {
-      cursor:pointer;
-      color: #3369ff;
-      font-size: 12px;
-  }
+#showmdp {
+    cursor: pointer;
+    color: #3369ff;
+    font-size: 12px;
+}

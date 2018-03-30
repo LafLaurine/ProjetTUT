@@ -1,21 +1,18 @@
-<?php
-
+<?php 
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-<title>Intertional Student Planner - Projet tut</title>
+<title>International Student Planner - Projet tut</title>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../img/fav_logo.png"/>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../CSS/modal.css">
 <link rel="stylesheet" type="text/css" href="../CSS/profil.css">
 <link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
 <link rel="stylesheet" type="text/css" href="../CSS/articles.css">
@@ -25,6 +22,7 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 <script src="../js/profil.js"></script>
 
 </head>
+
 <script>
 	$(document).ready(function)
 	{
@@ -108,7 +106,7 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 			$db = connectBd();
 			//On récupère tous les articles associés à un pays
 			$req=$db->prepare('SELECT DISTINCT * FROM article
-			JOIN pays ON article.id_pays=pays.id_pays WHERE id_article=:id_article');
+			JOIN langue ON article.id_langue=langue.id_langue WHERE id_article=:id_article');
 			$req->bindValue(":id_article",$_GET["article"],PDO::PARAM_STR);
 			$req->execute();
 
@@ -140,20 +138,20 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 			<tr>
 			<?php
 			$db = connectBd();
-			$req=$db->prepare('SELECT DISTINCT * FROM pays');
+			$req=$db->prepare('SELECT DISTINCT * FROM langue');
 			$req->execute();
 
 			while( $data = $req->fetch(PDO::FETCH_ASSOC))
 			{
 
-				$req2=$db->prepare('SELECT DISTINCT * FROM article WHERE id_pays=:id_pays');
-				$req2->bindValue(":id_pays",$data["id_pays"],PDO::PARAM_INT);
+				$req2=$db->prepare('SELECT DISTINCT * FROM article WHERE id_langue=:id_langue');
+				$req2->bindValue(":id_langue",$data["id_langue"],PDO::PARAM_INT);
 				$req2->execute();
 
 				while( $article = $req2->fetch(PDO::FETCH_ASSOC))
 				{
-					echo '<td>'. $data["nom_pays"]. '</td>';	
-					echo "<td><a href=\"articles.php?article={$article['id_article']}\">". $article["titre"]. '</td></tr>';	
+					echo '<td>'. $data["nom_langue"]. '</td>';	
+					echo "<td><a href=\"langue.php?article={$article['id_article']}\">". $article["titre"]. '</td></tr>';	
 				}
 
 				
@@ -182,7 +180,7 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 
 <?php 
 		$db = connectBd();
-		$req=$db->prepare('SELECT DISTINCT * FROM pays');
+		$req=$db->prepare('SELECT DISTINCT * FROM langue');
 		$req->execute();
 
 		while( $data = $req->fetch(PDO::FETCH_ASSOC))
@@ -193,14 +191,16 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
             JOIN composante ON formation.id_composante=composante.id_composante
             JOIN campus ON composante.id_campus = campus.id_campus
             JOIN ville ON campus.id_ville = ville.id_ville
-            JOIN pays ON ville.id_pays = pays.id_pays
-            WHERE ville.id_pays=:id_pays');
-            $req2->bindValue(":id_pays",$data["id_pays"],PDO::PARAM_INT);
+			JOIN pays ON ville.id_pays = pays.id_pays
+            JOIN langue_parlee_pays ON pays.id_pays = langue_parlee_pays.id_pays
+			JOIN langue ON langue_parlee_pays.id_langue = langue.id_langue
+            WHERE langue.id_langue=:id_langue');
+            $req2->bindValue(":id_langue",$data["id_langue"],PDO::PARAM_INT);
             $req2->execute();
     
             while( $forma = $req2->fetch(PDO::FETCH_ASSOC))
             {
-				echo '<td>'. $data["nom_pays"]. '</td>';	
+				echo '<td>'. $data["nom_langue"]. '</td>';	
 				echo '<td>'. '<a style="text-decoration:underline;" target="_blank" href='.$forma["url"].'>'. $forma["nom_formation"].'</a></td></tr>';
             } 
 		}
@@ -214,6 +214,7 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 	}
 ?>
 
+
 </tbody>
 </table>
 
@@ -221,36 +222,32 @@ require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 
 <footer class="page-footer blue darken-2">
 <div class="container">
-  <div class="row">
+	<div class="row">
 
 	<div class="col l6 s12">
 		<h5 class="white-text">Réseaux sociaux</h5>
 		<ul>
 		<li class="social-footer"><a href="https://www.facebook.com/Internacia1/?ref=br_rs" target="_blank">Facebook</a></li>
-  <li class="social-footer"><a href="https://twitter.com/ISPFrance?lang=fr" target="_blank">Twitter</a></li>
-  <li class="social-footer"><a href="https://www.instagram.com/internationalstudentplanner/" target="_blank">Instagram</a></li>
-		  </ul>
-	  </div>
+		<li class="social-footer"><a href="https://twitter.com/ISPFrance?lang=fr" target="_blank">Twitter</a></li>
+		<li class="social-footer"><a href="https://www.instagram.com/internationalstudentplanner/" target="_blank">Instagram</a></li>
+			</ul>
+		</div>
 	<div class="col l3 s12 right">
-	  <h5 class="white-text">Annexes</h5>
-	  <ul>
+		<h5 class="white-text">Annexes</h5>
+		<ul>
 		<li><a href="./propos.php">À propos</a></li>
-	  <li><a href="./mention.php">Mentions légales</a></li>
-	  <li><a href="./partenaires.php">Partenaires</a></li>
-	  </ul>
+		<li><a href="./mention.php">Mentions légales</a></li>
+		<li><a href="./partenaires.php">Partenaires</a></li>
+		</ul>
 	</div>
-  </div>
+	</div>
 </div>
 <div class="footer-copyright">
-  <div class="container">
-  © 2017 International Student Planner
-  </div>
+	<div class="container">
+	© 2017 International Student Planner
+	</div>
 </div>
 </footer>
 
-
-
-
 </body>
-
 </html>

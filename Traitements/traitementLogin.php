@@ -1,17 +1,11 @@
+<!-- Traitement de la connexion -->
+
 <?php 
 header('Content-type: text/html; charset=UTF-8');
 session_start();
+require_once $_SERVER['DOCUMENT_ROOT']. '/ProjetTUT/Traitements/connexion.php';
 
-function connectBd () {
-    $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
-    /* Active le mode exception */
-    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-    /* Indique le charset */
-    $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-    return new PDO('mysql:host=localhost;dbname=projettut', 'root', '',$pdo_options);
-}
-
-
+//Teste si l'utilisateur existe
 function userExists() 
 {
     $db = connectBd();
@@ -22,9 +16,7 @@ function userExists()
    
 }
 
-
-
-
+//Récupération des variables
 $pseudo = filter_input(INPUT_POST, 'pseudo');
 $passwd = filter_input(INPUT_POST, 'pass');
 
@@ -50,7 +42,7 @@ if (isset($pseudo,$passwd))
             $req->bindParam('pseudo', $pseudo, PDO::PARAM_STR, 32);
             $req->bindParam('hash', $hash , PDO::PARAM_STR, 64);
             $req->execute();
-            $result = $req->fetch();
+            $result = $req->fetch(PDO::FETCH_ASSOC);
     
             //Teste si le mot de passe est associé avec le pseudo
             if ($result)
@@ -59,7 +51,8 @@ if (isset($pseudo,$passwd))
                 if (!session_id()) 
                 session_start();
                 $_SESSION['pseudo'] = $pseudo;
-                header('Location: ../articles/index.php');
+                $_SESSION['id_etu']= $result['id_etu'];
+                header('Location: ../articles/profil.php');
                     
             } else 
             {

@@ -8,7 +8,7 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-<title>Intertional Student Planner</title>
+<title>International Student Planner</title>
 <meta charset="UTF-8">
 <meta name="author" content="Laurine Lafontaine">
 <meta name="description" content="Projet tut"/>
@@ -16,7 +16,8 @@ header('Content-type: text/html; charset=utf-8');
     <link rel="stylesheet" type="text/css" href="./CSS/style.css">
     <link rel="stylesheet" type="text/css" href="./CSS/video.css">
     <link rel="stylesheet" type="text/css" href="./CSS/modal.css">
-    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/materialize.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/profil.js"></script>
 
@@ -34,64 +35,36 @@ header('Content-type: text/html; charset=utf-8');
         <div id="video">
 
                 <h1 id="site">INTERNATIONAL STUDENT PLANNER</h1>
-                <div id="bloc">
-                <a id="info" class="button">Informations</a>
-                <div class="information" style="display:none;">
-                    <p class="para">Projet tuteuré deuxième année de DUT MMI. </p>
-                <p class="para">Le but de ce site est d'accompagner les étudiants dans le choix de leur échange ou période à l'étranger</p>
-                </div>
-                
-
                 <?php 
                 //si user pas connecté
                    
-                    if (!isset($_SESSION['pseudo'])) {
+                    if (!isset($_SESSION['pseudo'])) { ?>
 
+                    
+        <div class="login-box">
+        <div class="lb-header">
+        <a href="#" class="active" id="login-box-link">Se connecter</a>
+        <a href="#" id="signup-box-link">S'inscrire</a>
+        </div>
 
-                    
-                
-            echo '<div id="form">
-            <a onclick="document.getElementById(\'anim\').style.display=\'block\'" id="btnLog" class="button">CONNEXION</a>
-            <div id="anim" class="modal">
-            <div class="login-form">
-            
-            <button type="button" onclick="document.getElementById(\'anim\').style.display=\'none\'" class="cancelbtn">X</button>
-            <div class="login-top">
-                <h1 class="login-header">CONNEXION</h1>
-                <form action="./Traitements/traitementLogin.php" method="post">
-                    <input type="text" id="user-name" name="pseudo" />
-                    <label for="user-name" class="input-prefix">Pseudo</label>
-                    
-                    <input type="password" id="password" name="pass" />
-                    <label for="password" class="input-prefix">Mot de passe</label>
-                    
-                    <input type="submit" id="sign-in" name="Sign-in" value="Se connecter" />
-                    
-                </form>
-                
-            </div>
-            
-            <div id="form">
-            <div class="login-bottom">
-                <a href="./Traitements/forgotPwd.php" class="forgot-password">Mot de passe oublié ?</a>
-            </div>
-            
-            </div>              
-               
-                </div>
-                </div>
+        
+        <form class="email-login" action="./Traitements/traitementLogin.php" style="margin-top: 20%;" method="post">
+        <div class="u-form-group">
+        <label for="user-name" class="input-prefix">Pseudo</label>
+        <input type="text" id="user-name" name="pseudo" />
+        </div>
+          <div class="u-form-group">
+          <label for="password" class="input-prefix">Mot de passe</label>
+          <input type="password" id="password" name="pass" />
+          </div>
+          <div class="u-form-group">
+            <button>Se connecter</button>
+          </div>
+          <div class="u-form-group">
+            <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+          </div>
 
-                <a onclick="document.getElementById(\'registerForm\').style.display=\'block\'" id="btnReg" class="button">INSCRIPTION</a>
-                <div id="registerForm" class="modal">
-                
-                <button type="button" onclick="document.getElementById(\'registerForm\').style.display=\'none\'" class="cancelbtn">X</button>'?>
-                  
-                <?php include "./Traitements/register.php"; ?>
-               
-               
-               <?php echo ' </div>';
-               
-               if(@$_GET['action'] == 'success' ) {
+         <?php if(@$_GET['action'] == 'success' ) {
                 echo "<h2 style=\"color:#3080D0; text-align:center;\"> Votre compte a bien été enregistré, vous pouvez vous connecter </h2>";
                }
 
@@ -109,12 +82,25 @@ header('Content-type: text/html; charset=utf-8');
 
                if(@$_GET['action'] == 'empty' ) {
                 echo "<h2 style=\"color:#3080D0; text-align:center;\"> Champs vides </h2>";
-               }
+               }?>
+               
+        </form>
 
+        <?php include("./Traitements/register.php"); ?>
+
+   
+        </div>                                  
+               
+               <?php echo ' </div>';
+                    }
+
+                    else
+                    {
+                    echo '<a class="button" href="Traitements/logout.php" id="deco" style="margin-left:43%";>Déconnexion</a></br>';
+                    echo '<a class="button" href="articles/articles.php" id="deco" style="margin-left:43%";>Retour aux articles</a></br>';
                     }
                     
       ?>
-        </div>
         </div>
             
 </body>

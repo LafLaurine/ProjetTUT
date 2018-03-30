@@ -1,3 +1,5 @@
+<!-- Mention légales du site -->
+
 <?php
 
 session_start();
@@ -8,21 +10,21 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Intertionational Student Planner - Projet tut</title>
+<title>International Student Planner - Projet tut</title>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../img/fav_logo.png"/>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
 <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
 <link rel="stylesheet" type="text/css" href="../CSS/profil.css">
+<link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
 <link rel="stylesheet" type="text/css" href="../CSS/articles.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../js/main.js"></script>
-<script src="../js/materialize.js"></script>
 <script src="../js/profil.js"></script>
 
 </head>
+
 <script>
 	$(document).ready(function)
 	{
@@ -92,29 +94,17 @@ header('Content-type: text/html; charset=utf-8');
     </ul>
   </div>
 </nav>
-
-
 <main>
+
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
-<h2 id="contactText">Contact</h2>
 
-<div id="containerForm">
+<h2 class="mentionTitle">À propos</h2>
 
-<form method="post" action="mailto:isplannerFrance@gmail.com">
-    <div class = "row">
-				<label for="projet">Nom et prénom <i class="material-icons">person</i></label><br>
-				<input name="nom" type='text'>
-      </div></br>
-      <div class='row'>
-      <label for="projet">Mail <i class="material-icons">contact_mail</i></label><br>
-				<input name="email" type='email'>
-  </div>
-  <div class='row'>
-    <textarea placeholder='Votre message'></textarea>
-  </div>  
-    <input type="submit" value="Envoyer" class="btn waves-effect waves-light"/>
-</form>
-</div></br>
+<p>International Student Planner est un nouveau concept qui s’intéresse aux possibilités d’études à l’étranger et aux choix de parcours universitaires. </p>
+
+<p>ISP a pour but de répertorier les établissements qui proposent un échange universitaire avec l’étranger. Il référence ainsi les écoles et universités qui accueillent des étudiants étrangers.</p>
+
+<p>Sur le site, les étudiants peuvent donc connaître des établissements d’accueil à l’étranger en fonction de leur formation, et consulter des articles sur les différents lieux.</p></br>
 
 </main>
 
@@ -148,5 +138,4 @@ header('Content-type: text/html; charset=utf-8');
 </footer>
 
 </body>
-
 </html>

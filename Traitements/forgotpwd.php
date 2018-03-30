@@ -1,3 +1,5 @@
+<!-- Si user oublie son mdp. Affichage -->
+
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>

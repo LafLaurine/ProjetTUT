@@ -1,3 +1,5 @@
+<!-- Mention légales du site -->
+
 <?php
 
 session_start();
@@ -8,21 +10,23 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>Intertionational Student Planner - Projet tut</title>
+<title>International Student Planner - Projet tut</title>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="../img/fav_logo.png"/>
 <link rel="stylesheet" type="text/css" href="../CSS/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
 <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
 <link rel="stylesheet" type="text/css" href="../CSS/profil.css">
+<link type="text/css" rel="stylesheet" href="../CSS/materialize.css"  media="screen,projection"/>
 <link rel="stylesheet" type="text/css" href="../CSS/articles.css">
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script src="../js/main.js"></script>
-<script src="../js/materialize.js"></script>
 <script src="../js/profil.js"></script>
+<script src="../js/materialize.js"></script>
+<script src="../js/init.js"></script>
 
 </head>
+
 <script>
 	$(document).ready(function)
 	{
@@ -93,28 +97,24 @@ header('Content-type: text/html; charset=utf-8');
   </div>
 </nav>
 
-
 <main>
+
 <h1>INTERNATIONAL STUDENT PLANNER</h1>
-<h2 id="contactText">Contact</h2>
 
-<div id="containerForm">
-
-<form method="post" action="mailto:isplannerFrance@gmail.com">
-    <div class = "row">
-				<label for="projet">Nom et prénom <i class="material-icons">person</i></label><br>
-				<input name="nom" type='text'>
-      </div></br>
-      <div class='row'>
-      <label for="projet">Mail <i class="material-icons">contact_mail</i></label><br>
-				<input name="email" type='email'>
-  </div>
-  <div class='row'>
-    <textarea placeholder='Votre message'></textarea>
-  </div>  
-    <input type="submit" value="Envoyer" class="btn waves-effect waves-light"/>
-</form>
-</div></br>
+<table class="highlight bordered centered">
+	<thead>
+		<tr>
+		<th>Partenaires</th>
+		</tr>
+	</thead>
+<tbody>
+<td><a href="http://www.uqac.ca/" target="_blank"><p>UQAC</p></a></td></tr>
+<tr><td><a href="https://uqam.ca/" target="_blank"><p>UQAM</p></a></td></tr>
+<tr><td><a href="https://www.usherbrooke.ca/" target="_blank"><p>Université de Sherbrooke</p></a></td></tr>
+<tr><td><a href="https://www.ulaval.ca/" target="_blank"><p>Université de Laval</p></a></td></tr>
+<tr><td><a href="http://www.iut-bobigny.univ-paris13.fr/" target="_blank"><p>IUT Bobigny</p></a></td></tr>
+</tbody>
+</table>
 
 </main>
 
@@ -148,5 +148,15 @@ header('Content-type: text/html; charset=utf-8');
 </footer>
 
 </body>
+<script>$(document).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>
 
+<script>
+	$(document).ready(function)
+	{
+		$(".dropdown-trigger").dropdown();
+	});
+	</script>
 </html>

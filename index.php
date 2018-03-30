@@ -9,7 +9,7 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-    <title>Intertional Student Planner</title>
+    <title>International Student Planner</title>
     <meta charset="UTF-8">
     <meta name="author" content="Laurine Lafontaine">
 	<meta name="description" content="Projet tut"/>
@@ -19,16 +19,15 @@ header('Content-type: text/html; charset=utf-8');
     <link rel="stylesheet" type="text/css" href="./CSS/video.css">
     <link rel="stylesheet" type="text/css" href="./CSS/split.css">
 </head>
-<?php 
 
-echo '<body style="overflow:hidden";>
+<body style="overflow:hidden";>
 
 
 
     <div class="split-pane col-xs-12 col-sm-6 uiux-side">
     <div>
         <div class="text-content">
-        <div class="big">TROUVER SA FORMATION A L\'ÉTRANGER ?</div>
+        <div class="big">TROUVER TA FORMATION A L'ÉTRANGER ?</div>
         </div>
         <a id="register" href="./destination.php" class="button">TROUVE TA DESTINATION</a>
     </div>
@@ -41,7 +40,7 @@ echo '<body style="overflow:hidden";>
         <a id="artc" href="./articles/index.php" class="button">CONSULTER LES ARTICLES</a>
     </div>
     </div>
-    </body>';?>
+</body>
 
 </html>
 
